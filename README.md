@@ -4,7 +4,7 @@
                    social-network
     </a>
 </h1>
-<p align="center"> API RESTful for social event network .</p>
+<p align="center"> API RESTful for social event network, and client in React.</p>
 
 <p align="center">
     <img src="https://img.shields.io/static/v1?label=Node.js&message=12&color=A7E8BD&style=for-the-badge&logo=ghost"/>
