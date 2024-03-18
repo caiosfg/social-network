@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
+import { auth, GoogleAuthProvider, signInWithPopup } from '../services/firebase'
+
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleImg from '../assets/images/google-icon.svg'
@@ -10,8 +12,15 @@ export function Home(){
     const navigate = useNavigate();
 
 
-    function navigateToNewRoom(){
-        navigate('/rooms/new')
+    function handleCreateRoom(){
+
+        const provider = new GoogleAuthProvider()
+
+        signInWithPopup(auth, provider).then(result => {
+            console.log("🚀 ~ signInWithPopup ~ result:", result)
+            
+            navigate('/rooms/new')
+        })
     }
 
 
@@ -25,7 +34,7 @@ export function Home(){
             <main>
                 <div className='main-content'>
                     <img src={logoImg} alt="Social Network" />
-                    <button onClick={navigateToNewRoom} className='create-room'>
+                    <button onClick={handleCreateRoom} className='create-room'>
                         <img src={googleImg} alt="Google logo" />
                         Criar sala com Google
                     </button>
